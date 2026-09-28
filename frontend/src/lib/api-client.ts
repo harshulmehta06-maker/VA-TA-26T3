@@ -6,6 +6,8 @@
  */
 
 export interface SensorMetadata {
+  min: number;
+  max: number;
   sensorId: number;
   sensorName: string;
   unit: string;
@@ -32,7 +34,7 @@ export async function fetchHealth(timeoutMs = 3000): Promise<HealthResponse> {
   try {
     const res = await fetch(url, { mode: 'cors', signal: controller.signal });
     const data = await res.json().catch(() => ({}));
-    if (!res.ok) {
+    if (!res.ok && !(res.status === 503 && data.status === 'degraded')) {
       throw new Error(data.reason ?? `Health: ${res.status} ${res.statusText}`);
     }
     return data as HealthResponse;
@@ -52,3 +54,30 @@ export async function fetchHealth(timeoutMs = 3000): Promise<HealthResponse> {
 // or whatever paths and response shapes you defined). Use the types above
 // or define new ones to match your API.
 // ---------------------------------------------------------------------------
+
+export interface LatestSensorReading {
+  sensorId: number;
+  value: number | null;
+  timestamp: number | null; // Emulator Unix seconds.
+  receivedAt: number | null; // API Unix milliseconds.
+  status: 'missing' | 'stale' | 'normal' | 'out_of_range';
+}
+
+export interface TelemetrySnapshot {
+  connected: boolean;
+  readings: LatestSensorReading[];
+}
+
+async function fetchSensorResource<T>(path: string, signal: AbortSignal): Promise<T> {
+  const response = await fetch(`${API_BASE_URL}${path}`, { signal, cache: 'no-store' });
+  if (!response.ok) throw new Error(response.status === 503
+    ? 'Waiting for sensor data. Retrying automatically.'
+    : `Unable to load sensors (${response.status}). Retrying automatically.`);
+  return response.json();
+}
+
+export const fetchSensors = (signal: AbortSignal) =>
+  fetchSensorResource<SensorMetadata[]>('/sensors', signal);
+
+export const fetchLatestTelemetry = (signal: AbortSignal) =>
+  fetchSensorResource<TelemetrySnapshot>('/telemetry/latest', signal);

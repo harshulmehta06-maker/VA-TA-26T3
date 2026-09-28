@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1560" viewBox="0 0 1440 1560">
+<rect width="1440" height="1560" fill="#f4f4f4"/>
+<text x="60" y="44" font-family="Arial, sans-serif" font-size="24" fill="#292929">SPYDER TELEMETRY — LOW-FIDELITY WIREFRAME</text>
+<text x="60" y="73" font-family="Arial, sans-serif" font-size="15" fill="#292929">Documents the implemented dashboard layout · Static placeholders, not live telemetry</text>
+<rect x="60" y="95" width="1320" height="80" rx="6" fill="#ffffff" stroke="#888"/>
+<text x="84" y="130" font-family="Arial, sans-serif" font-size="24" fill="#292929">Logo  |  Spyder Telemetry</text>
+<text x="84" y="155" font-family="Arial, sans-serif" font-size="14" fill="#292929">Vehicle Analytics Fullstack Assessment</text>
+<rect x="1150" y="116" width="205" height="36" rx="6" fill="#eee" stroke="#888"/>
+<text x="1170" y="140" font-family="Arial, sans-serif" font-size="16" fill="#292929">Connection status</text>
+<text x="60" y="212" font-family="Arial, sans-serif" font-size="20" fill="#292929">PRIMARY METRICS</text>
+<rect x="60" y="230" width="424" height="160" rx="6" fill="#ffffff" stroke="#888"/>
+<text x="78" y="260" font-family="Arial, sans-serif" font-size="19" fill="#292929">Vehicle speed</text>
+<rect x="78" y="275" width="150" height="70" rx="6" fill="#eee" stroke="#888"/>
+<text x="88" y="314" font-family="Arial, sans-serif" font-size="14" fill="#292929">Visual indicator</text>
+<text x="245" y="305" font-family="Arial, sans-serif" font-size="18" fill="#292929">000.00 km/h</text>
+<text x="245" y="333" font-family="Arial, sans-serif" font-size="14" fill="#292929">Reading status</text>
+<text x="78" y="373" font-family="Arial, sans-serif" font-size="14" fill="#292929">Segmented speed dial</text>
+<rect x="508" y="230" width="424" height="160" rx="6" fill="#ffffff" stroke="#888"/>
+<text x="526" y="260" font-family="Arial, sans-serif" font-size="19" fill="#292929">Battery temperature</text>
+<rect x="526" y="275" width="150" height="70" rx="6" fill="#eee" stroke="#888"/>
+<text x="536" y="314" font-family="Arial, sans-serif" font-size="14" fill="#292929">Visual indicator</text>
+<text x="693" y="305" font-family="Arial, sans-serif" font-size="18" fill="#292929">00.00 °C</text>
+<text x="693" y="333" font-family="Arial, sans-serif" font-size="14" fill="#292929">Reading status</text>
+<text x="526" y="373" font-family="Arial, sans-serif" font-size="14" fill="#292929">Thermometer</text>
+<rect x="956" y="230" width="424" height="160" rx="6" fill="#ffffff" stroke="#888"/>
+<text x="974" y="260" font-family="Arial, sans-serif" font-size="19" fill="#292929">State of charge</text>
+<rect x="974" y="275" width="150" height="70" rx="6" fill="#eee" stroke="#888"/>
+<text x="984" y="314" font-family="Arial, sans-serif" font-size="14" fill="#292929">Visual indicator</text>
+<text x="1141" y="305" font-family="Arial, sans-serif" font-size="18" fill="#292929">00.00 %</text>
+<text x="1141" y="333" font-family="Arial, sans-serif" font-size="14" fill="#292929">Reading status</text>
+<text x="974" y="373" font-family="Arial, sans-serif" font-size="14" fill="#292929">Battery fill icon</text>
+<rect x="60" y="410" width="424" height="160" rx="6" fill="#ffffff" stroke="#888"/>
+<text x="78" y="440" font-family="Arial, sans-serif" font-size="19" fill="#292929">Front brake pressure</text>
+<rect x="78" y="455" width="150" height="70" rx="6" fill="#eee" stroke="#888"/>
+<text x="88" y="494" font-family="Arial, sans-serif" font-size="14" fill="#292929">Visual indicator</text>
+<text x="245" y="485" font-family="Arial, sans-serif" font-size="18" fill="#292929">00.00 bar</text>
+<text x="245" y="513" font-family="Arial, sans-serif" font-size="14" fill="#292929">Reading status</text>
+<text x="78" y="553" font-family="Arial, sans-serif" font-size="14" fill="#292929">Brake disc + pressure ring</text>
+<rect x="508" y="410" width="424" height="160" rx="6" fill="#ffffff" stroke="#888"/>
+<text x="526" y="440" font-family="Arial, sans-serif" font-size="19" fill="#292929">Steering angle</text>
+<rect x="526" y="455" width="150" height="70" rx="6" fill="#eee" stroke="#888"/>
+<text x="536" y="494" font-family="Arial, sans-serif" font-size="14" fill="#292929">Visual indicator</text>
+<text x="693" y="485" font-family="Arial, sans-serif" font-size="18" fill="#292929">00.00°</text>
+<text x="693" y="513" font-family="Arial, sans-serif" font-size="14" fill="#292929">Reading status</text>
+<text x="526" y="553" font-family="Arial, sans-serif" font-size="14" fill="#292929">Rotating steering wheel</text>
+<rect x="956" y="410" width="424" height="160" rx="6" fill="#ffffff" stroke="#888"/>
+<text x="974" y="440" font-family="Arial, sans-serif" font-size="19" fill="#292929">Tyre pressures</text>
+<rect x="974" y="455" width="150" height="70" rx="6" fill="#eee" stroke="#888"/>
+<text x="984" y="494" font-family="Arial, sans-serif" font-size="14" fill="#292929">Visual indicator</text>
+<text x="1141" y="485" font-family="Arial, sans-serif" font-size="18" fill="#292929">000.0 kPa per tyre</text>
+<text x="1141" y="513" font-family="Arial, sans-serif" font-size="14" fill="#292929">Reading status</text>
+<text x="974" y="553" font-family="Arial, sans-serif" font-size="14" fill="#292929">Top-down car: FL / FR / RL / RR</text>
+<rect x="60" y="610" width="1320" height="260" rx="6" fill="#ffffff" stroke="#888"/>
+<text x="80" y="644" font-family="Arial, sans-serif" font-size="20" fill="#292929">SELECTED SENSOR — LIVE HISTORY</text>
+<rect x="1050" y="622" width="310" height="36" rx="6" fill="#eee" stroke="#888"/>
+<text x="1065" y="646" font-family="Arial, sans-serif" font-size="16" fill="#292929">Sensor selector (12 sensors)</text>
+<path d="M130 690 L130 806" fill="none" stroke="#999"/>
+<path d="M130 806 L1325 806" fill="none" stroke="#999"/>
+<path d="M130 766 L260 750 L390 779 L520 720 L650 746 L780 700 L910 759 L1040 730 L1170 750 L1325 715" fill="none" stroke="#555" stroke-width="3"/>
+<text x="130" y="826" font-family="Arial, sans-serif" font-size="13" fill="#292929">−60s</text>
+<text x="710" y="826" font-family="Arial, sans-serif" font-size="13" fill="#292929">−30s</text>
+<text x="1290" y="826" font-family="Arial, sans-serif" font-size="13" fill="#292929">Now</text>
+<text x="80" y="851" font-family="Arial, sans-serif" font-size="14" fill="#292929">Hover: value + timestamp · Within/outside-range legend · History clears on refresh</text>
+<rect x="60" y="890" width="1320" height="240" rx="6" fill="#ffffff" stroke="#888"/>
+<text x="80" y="925" font-family="Arial, sans-serif" font-size="20" fill="#292929">ALL SENSORS</text>
+<text x="80" y="959" font-family="Arial, sans-serif" font-size="15" fill="#292929">Sensor</text>
+<text x="360" y="959" font-family="Arial, sans-serif" font-size="15" fill="#292929">Sensor ID</text>
+<text x="580" y="959" font-family="Arial, sans-serif" font-size="15" fill="#292929">Value / unit</text>
+<text x="745" y="959" font-family="Arial, sans-serif" font-size="15" fill="#292929">Status</text>
+<text x="950" y="959" font-family="Arial, sans-serif" font-size="15" fill="#292929">Timestamp</text>
+<text x="1140" y="959" font-family="Arial, sans-serif" font-size="15" fill="#292929">Trend / Expand</text>
+<path d="M80 972 L1360 972" fill="none" stroke="#999"/>
+<text x="80" y="990" font-family="Arial, sans-serif" font-size="14" fill="#292929">Battery temperature</text>
+<text x="360" y="990" font-family="Arial, sans-serif" font-size="14" fill="#292929">Numeric ID</text>
+<text x="580" y="990" font-family="Arial, sans-serif" font-size="14" fill="#292929">00.00 unit</text>
+<text x="745" y="990" font-family="Arial, sans-serif" font-size="14" fill="#292929">Within / outside</text>
+<text x="950" y="990" font-family="Arial, sans-serif" font-size="14" fill="#292929">hh:mm:ss</text>
+<text x="1140" y="990" font-family="Arial, sans-serif" font-size="14" fill="#292929">Graph ↗</text>
+<path d="M80 1006 L1360 1006" fill="none" stroke="#999"/>
+<text x="80" y="1024" font-family="Arial, sans-serif" font-size="14" fill="#292929">Motor temperature</text>
+<text x="360" y="1024" font-family="Arial, sans-serif" font-size="14" fill="#292929">Numeric ID</text>
+<text x="580" y="1024" font-family="Arial, sans-serif" font-size="14" fill="#292929">00.00 unit</text>
+<text x="745" y="1024" font-family="Arial, sans-serif" font-size="14" fill="#292929">Within / outside</text>
+<text x="950" y="1024" font-family="Arial, sans-serif" font-size="14" fill="#292929">hh:mm:ss</text>
+<text x="1140" y="1024" font-family="Arial, sans-serif" font-size="14" fill="#292929">Graph ↗</text>
+<path d="M80 1040 L1360 1040" fill="none" stroke="#999"/>
+<text x="80" y="1058" font-family="Arial, sans-serif" font-size="14" fill="#292929">Tyre pressure FL</text>
+<text x="360" y="1058" font-family="Arial, sans-serif" font-size="14" fill="#292929">Numeric ID</text>
+<text x="580" y="1058" font-family="Arial, sans-serif" font-size="14" fill="#292929">00.00 unit</text>
+<text x="745" y="1058" font-family="Arial, sans-serif" font-size="14" fill="#292929">Within / outside</text>
+<text x="950" y="1058" font-family="Arial, sans-serif" font-size="14" fill="#292929">hh:mm:ss</text>
+<text x="1140" y="1058" font-family="Arial, sans-serif" font-size="14" fill="#292929">Graph ↗</text>
+<path d="M80 1074 L1360 1074" fill="none" stroke="#999"/>
+<text x="80" y="1092" font-family="Arial, sans-serif" font-size="14" fill="#292929">… all 12 sensors</text>
+<text x="360" y="1092" font-family="Arial, sans-serif" font-size="14" fill="#292929">Numeric ID</text>
+<text x="580" y="1092" font-family="Arial, sans-serif" font-size="14" fill="#292929">00.00 unit</text>
+<text x="745" y="1092" font-family="Arial, sans-serif" font-size="14" fill="#292929">Within / outside</text>
+<text x="950" y="1092" font-family="Arial, sans-serif" font-size="14" fill="#292929">hh:mm:ss</text>
+<text x="1140" y="1092" font-family="Arial, sans-serif" font-size="14" fill="#292929">Graph ↗</text>
+<rect x="60" y="1150" width="1320" height="130" rx="6" fill="#ffffff" stroke="#888"/>
+<text x="80" y="1185" font-family="Arial, sans-serif" font-size="20" fill="#292929">DATA QUALITY</text>
+<rect x="80" y="1200" width="305" height="60" rx="6" fill="#eee" stroke="#888"/>
+<text x="92" y="1222" font-family="Arial, sans-serif" font-size="14" fill="#292929">Accepted</text>
+<text x="92" y="1247" font-family="Arial, sans-serif" font-size="18" fill="#292929">Count</text>
+<rect x="403" y="1200" width="305" height="60" rx="6" fill="#eee" stroke="#888"/>
+<text x="415" y="1222" font-family="Arial, sans-serif" font-size="14" fill="#292929">Malformed rejected</text>
+<text x="415" y="1247" font-family="Arial, sans-serif" font-size="18" fill="#292929">Count</text>
+<rect x="726" y="1200" width="305" height="60" rx="6" fill="#eee" stroke="#888"/>
+<text x="738" y="1222" font-family="Arial, sans-serif" font-size="14" fill="#292929">Old / duplicate ignored</text>
+<text x="738" y="1247" font-family="Arial, sans-serif" font-size="18" fill="#292929">Count</text>
+<rect x="1049" y="1200" width="305" height="60" rx="6" fill="#eee" stroke="#888"/>
+<text x="1061" y="1222" font-family="Arial, sans-serif" font-size="14" fill="#292929">Out-of-range accepted</text>
+<text x="1061" y="1247" font-family="Arial, sans-serif" font-size="18" fill="#292929">Count</text>
+<rect x="60" y="1300" width="1320" height="190" rx="6" fill="#ffffff" stroke="#888"/>
+<text x="80" y="1335" font-family="Arial, sans-serif" font-size="20" fill="#292929">INCIDENT TIMELINE + EVIDENCE</text>
+<rect x="80" y="1350" width="510" height="116" rx="6" fill="#eee" stroke="#888"/>
+<text x="95" y="1377" font-family="Arial, sans-serif" font-size="16" fill="#292929">Sensor · timestamp · inspect</text>
+<text x="95" y="1404" font-family="Arial, sans-serif" font-size="14" fill="#292929">Latest 100 threshold-crossing events</text>
+<text x="95" y="1433" font-family="Arial, sans-serif" font-size="16" fill="#292929">Select incident →</text>
+<rect x="610" y="1350" width="750" height="116" rx="6" fill="#ffffff" stroke="#888"/>
+<text x="628" y="1377" font-family="Arial, sans-serif" font-size="16" fill="#292929">Selected incident: valid range + four triggering readings</text>
+<text x="628" y="1405" font-family="Arial, sans-serif" font-size="14" fill="#292929">Source timestamp | Value | API receipt time</text>
+<text x="628" y="1435" font-family="Arial, sans-serif" font-size="14" fill="#292929">Close incident</text>
+<text x="60" y="1524" font-family="Arial, sans-serif" font-size="16" fill="#292929">Layout rationale: current state first → trends → individual sensors → diagnostic evidence.</text>
+</svg>

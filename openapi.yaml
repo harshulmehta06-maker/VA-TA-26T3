@@ -1,18 +1,219 @@
 openapi: 3.0.3
 info:
-  title: Vehicle Analytics API Assessment
+  title: Redback Telemetry API
   version: 1.0.0
-  description: >
-    Only the health endpoint is predefined. You must design and implement the
-    metadata and data API, then document your full API in this spec (or a separate
-    file) and describe how to view it in justification.md.
+  description: Emulator-backed metadata and validated latest readings. No persistent history.
+servers:
+  - url: http://localhost:4000
 paths:
   /health:
     get:
-      summary: Health check (implemented in skeleton)
+      summary: WebSocket connectivity and processing counters
       responses:
         '200':
-          description: OK
-servers:
-  - url: http://localhost:4000
-    description: Local development server
+          description: Connected to emulator
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+        '503':
+          description: Starting or disconnected; cached telemetry may remain available
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Health'
+  /sensors:
+    get:
+      summary: Discover sensors and inclusive assessment ranges
+      responses:
+        '200':
+          description: Cached metadata
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Sensor'
+        '503':
+          $ref: '#/components/responses/NotReady'
+  /telemetry/latest:
+    get:
+      summary: Latest valid reading for each sensor, including missing and stale states
+      description: Poll every second. Out-of-range values are preserved. Stale means received more than five seconds ago. Responses are not cached.
+      responses:
+        '200':
+          description: Snapshot, including upstream connectivity
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [source, connected, generatedAt, readings]
+                properties:
+                  source:
+                    type: string
+                    enum: [emulator]
+                  connected:
+                    type: boolean
+                  generatedAt:
+                    type: number
+                    description: Unix milliseconds
+                  readings:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Reading'
+        '503':
+          $ref: '#/components/responses/NotReady'
+  /diagnostics:
+    get:
+      summary: Processing counters and the latest 100 threshold-crossing incidents
+      description: Counters and incidents reset when the API restarts. Out-of-range readings are included in accepted. Each incident preserves the four triggering samples. Continuous violations do not create duplicate incidents until the five-second count drops below four.
+      responses:
+        '200':
+          description: Diagnostics remain available when the emulator is offline
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [connected, startedAt, counters, incidents]
+                properties:
+                  connected:
+                    type: boolean
+                  startedAt:
+                    type: number
+                    description: API creation time in Unix milliseconds
+                  counters:
+                    $ref: '#/components/schemas/Health/properties/counters'
+                  incidents:
+                    type: array
+                    maxItems: 100
+                    items:
+                      $ref: '#/components/schemas/Incident'
+  /openapi.yaml:
+    get:
+      summary: Download this specification
+      responses:
+        '200':
+          description: OpenAPI YAML document
+          content:
+            application/yaml:
+              schema:
+                type: string
+components:
+  responses:
+    NotReady:
+      description: Metadata has not yet been obtained
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Sensor:
+      type: object
+      required: [sensorId, sensorName, unit, min, max]
+      properties:
+        sensorId:
+          type: integer
+          format: int64
+        sensorName:
+          type: string
+        unit:
+          type: string
+        min:
+          type: number
+        max:
+          type: number
+    Reading:
+      type: object
+      required: [sensorId, value, timestamp, receivedAt, status]
+      properties:
+        sensorId:
+          type: integer
+          format: int64
+        value:
+          type: number
+          nullable: true
+        timestamp:
+          type: number
+          nullable: true
+          description: Emulator Unix seconds; null until first valid reading
+        receivedAt:
+          type: number
+          nullable: true
+          description: API receipt time in Unix milliseconds
+        status:
+          type: string
+          enum: [missing, stale, normal, out_of_range]
+    Health:
+      type: object
+      required: [status, emulator, sensors, counters]
+      properties:
+        status:
+          type: string
+          enum: [ok, degraded]
+        emulator:
+          type: boolean
+        sensors:
+          type: integer
+        counters:
+          type: object
+          required: [accepted, rejected, outOfOrder, outOfRange]
+          properties:
+            accepted:
+              type: integer
+            rejected:
+              type: integer
+            outOfOrder:
+              type: integer
+            outOfRange:
+              type: integer
+    Incident:
+      type: object
+      required: [id, sensorId, sensorName, unit, min, max, detectedAt, readings]
+      properties:
+        id:
+          type: integer
+        sensorId:
+          type: integer
+          format: int64
+        sensorName:
+          type: string
+        unit:
+          type: string
+        min:
+          type: number
+        max:
+          type: number
+        detectedAt:
+          type: number
+          description: Unix milliseconds
+        readings:
+          type: array
+          minItems: 4
+          maxItems: 4
+          items:
+            type: object
+            required: [sensorId, value, timestamp, receivedAt]
+            properties:
+              sensorId:
+                type: integer
+                format: int64
+              value:
+                type: number
+              timestamp:
+                type: number
+                description: Source Unix seconds
+              receivedAt:
+                type: number
+                description: API receipt Unix milliseconds
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: object
+          required: [code, message]
+          properties:
+            code:
+              type: string
+            message:
+              type: string

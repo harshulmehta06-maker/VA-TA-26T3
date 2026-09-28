@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "test": "npm run build && node --test test/*.test.cjs"
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -25,4 +26,3 @@
     "node": ">=18"
   }
 }
-

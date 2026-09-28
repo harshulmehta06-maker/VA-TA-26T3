@@ -2,8 +2,8 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-COPY package.json tsconfig.json openapi.yaml ./
-RUN npm install
+COPY package.json package-lock.json tsconfig.json openapi.yaml ./
+RUN npm ci
 
 COPY src ./src
 

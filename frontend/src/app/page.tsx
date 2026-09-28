@@ -1,13 +1,20 @@
 'use client';
 
 import Image from 'next/image';
+import { TelemetryProvider } from '../components/telemetry/telemetry-provider';
+import { TelemetryOverview } from '../components/telemetry/telemetry-overview';
+import { SensorTable } from '../components/telemetry/sensor-table';
 import { useEffect, useState } from 'react';
 import { fetchHealth, API_BASE_URL } from '../lib/api-client';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
+import { Card, CardDescription, CardHeader, CardTitle } from '../components/ui/card';
 
 export default function Page() {
+  return <TelemetryProvider><DashboardPage /></TelemetryProvider>;
+}
+
+function DashboardPage() {
   // 'checking' → initial state; 'ok' or 'unhealthy' after first health check.
-  const [healthStatus, setHealthStatus] = useState<'ok' | 'unhealthy' | 'checking'>('checking');
+  const [healthStatus, setHealthStatus] = useState<'ok' | 'unhealthy' | 'checking' | 'degraded'>('checking');
   const [healthError, setHealthError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -15,9 +22,9 @@ export default function Page() {
 
     async function checkHealth() {
       try {
-        await fetchHealth();
+        const health = await fetchHealth();
         if (cancelled) return;
-        setHealthStatus('ok');
+        setHealthStatus(health.status === 'degraded' ? 'degraded' : 'ok');
         setHealthError(null);
       } catch (e: unknown) {
         if (cancelled) return;
@@ -55,9 +62,6 @@ export default function Page() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <div className="rounded-full border border-border bg-card px-3 py-1 text-xs text-muted-foreground">
-              API base: <span className="font-mono">{API_BASE_URL}</span>
-            </div>
             <div
               className={`rounded-full px-3 py-1 text-xs font-medium ${
                 healthStatus === 'ok'
@@ -71,7 +75,7 @@ export default function Page() {
                 ? 'API connected'
                 : healthStatus === 'checking'
                   ? 'Checking…'
-                  : 'API unreachable'}
+                  : healthStatus === 'degraded' ? 'Emulator disconnected' : 'API unreachable'}
             </div>
           </div>
         </div>
@@ -92,34 +96,12 @@ export default function Page() {
           </Card>
         )}
 
-        <Card className="border-muted">
-          <CardHeader>
-            <CardTitle className="text-sm uppercase tracking-[0.2em] text-muted-foreground">
-              Dashboard data
-            </CardTitle>
-            <CardDescription>
-              This skeleton only calls <code className="rounded bg-muted px-1 py-0.5 text-[10px]">GET /health</code>.
-              Implement consumption of your API’s <strong>metadata</strong> and <strong>data</strong> routes (designed
-              in the API section) to populate the dashboard: resolve sensorId → sensorName and unit, and display
-              latest telemetry (and optionally a live stream). Use <code className="rounded bg-muted px-1 py-0.5 text-[10px]">src/lib/api-client.ts</code> to add
-              fetch functions for your endpoints, then wire them up here.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2 text-sm text-muted-foreground">
-            <p>
-              Once connected, show multiple sensors, a primary metric, sensible formatting (decimal places, units),
-              and consider status (e.g. colours for safe/unsafe ranges). Use shadcn/ui for layout and components.
-            </p>
-          </CardContent>
-        </Card>
+        <TelemetryOverview />
 
         <section className="space-y-3">
           <h2 className="text-sm font-semibold tracking-tight">All sensors</h2>
           <div className="overflow-x-auto rounded-xl border border-border bg-card">
-            <div className="flex min-h-[120px] items-center justify-center p-6 text-center text-sm text-muted-foreground">
-              No sensor data yet. Add your metadata and telemetry API calls in <code className="rounded bg-muted px-1 py-0.5 text-xs">api-client.ts</code> and
-              use them in this page to populate the table.
-            </div>
+            <SensorTable />
           </div>
         </section>
       </div>
