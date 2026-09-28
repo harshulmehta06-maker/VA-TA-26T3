@@ -48,14 +48,4 @@ docker compose start emulator
 # Recovery may take up to the current retry delay (maximum 30 seconds), plus handshake time.
 ```
 
-## Explain it in an interview
 
-“The emulator is stateless, so my API maintains the latest validated reading per sensor. Metadata is fetched separately. I reject malformed messages, preserve out-of-range values for diagnosis, and use independent sliding windows to log repeated range violations. Disconnects trigger retries, and the UI can distinguish missing, stale, and current readings.”
-
-Questions to answer yourself:
-
-1. Why is a TypeScript interface insufficient validation?
-2. Why does 90 C remain visible while the string '90' is rejected?
-3. What happens to the latest value after invalid data arrives?
-4. Why does the fourth event trigger the log, rather than the third?
-5. What information is lost when the API restarts?
