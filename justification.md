@@ -53,4 +53,4 @@ The 3D concept was dropped from scope.
 
 ## Learning notes
 
-See `docs/01-telemetry-api.md` for the data flow, trade-offs, runnable experiments, and interview questions.
+See `docs/01-telemetry-api.md` for the data flow, trade-offs, runnable experiments.
